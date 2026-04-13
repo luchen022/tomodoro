@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 	<head>
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Pomodoro</title>
+		<title>番茄钟</title>
 		<link rel="stylesheet" href="./index.css" />
 		<link rel="apple-touch-icon" sizes="180x180" href="./icons/appletouch.png" />
 		<link rel="icon" type="image/png" sizes="32x32" href="./icons/favicon.png" />
@@ -12,16 +12,16 @@
 		<meta name="theme-color" id="theme-meta" content="#222233" />
 	</head>
 	<body>
-		<button id="menubtn" title="Open Settings"></button>
+		<button id="menubtn" title="打开设置"></button>
 		<div id="taskswitcher">
-			<button id="statbtn" title="View Statistics">
+			<button id="statbtn" title="查看统计">
 				<span id="statline1"></span>
 				<span id="statline2"></span>
 				<span id="statline3"></span>
 			</button>
-			<select name="task" id="task-select" title="Switch Task"></select>
-			<div id="no-task-title" title="No Task Found">Tomodoro</div>
-			<button id="managetaskbtn" title="Manage Task">
+			<select name="task" id="task-select" title="切换任务"></select>
+			<div id="no-task-title" title="未找到任务">番茄钟</div>
+			<button id="managetaskbtn" title="管理任务">
 				<svg class="svg-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
 					<path
 						d="M6 34.5V42h7.5l22.13-22.13-7.5-7.5L6 34.5zm35.41-20.41c.78-.78.78-2.05 0-2.83l-4.67-4.67c-.78-.78-2.05-.78-2.83 0l-3.66 3.66 7.5 7.5 3.66-3.66z"
@@ -29,7 +29,7 @@
 				</svg>
 			</button>
 		</div>
-		<button id="popupbtn" title="Toggle PIP Mode">
+		<button id="popupbtn" title="切换画中画模式">
 			<svg class="svg-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
 				<path
 					d="M38 14H22v12h16V14zm4-8H6c-2.21 0-4 1.79-4 4v28c0 2.21 1.79 3.96 4 3.96h36c2.21 0 4-1.76 4-3.96V10c0-2.21-1.79-4-4-4zm0 32.03H6V9.97h36v28.06z"
@@ -45,11 +45,11 @@
 				<div id="time"></div>
 
 				<div id="status">
-					<span id="s-focus">FOCUS</span>
-					<span id="s-short">SHORT BREAK</span>
-					<span id="s-long">LONG BREAK</span>
+					<span id="s-focus">专注</span>
+					<span id="s-short">短休息</span>
+					<span id="s-long">长休息</span>
 				</div>
-				<button id="pauseplay" class="paused" title="Start Timer">
+				<button id="pauseplay" class="paused" title="开始计时">
 					<svg id="playing" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
 						<path
 							d="M18 32h4V16h-4v16zm6-28C12.95 4 4 12.95 4 24s8.95 20 20 20 20-8.95 20-20S35.05 4 24 4zm0 36c-8.82 0-16-7.18-16-16S15.18 8 24 8s16 7.18 16 16-7.18 16-16 16zm2-8h4V16h-4v16z"
@@ -62,18 +62,18 @@
 					</svg>
 				</button>
 			</div>
-			<button id="resetround" title="Reset Current Timer">
+			<button id="resetround" title="重置当前计时">
 				<svg class="svg-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
 					<path d="M12 12h4v24h-4zm7 12l17 12V12z" />
 				</svg>
 			</button>
-			<div id="roundno" title="Number of Focus Rounds"></div>
+			<div id="roundno" title="专注轮次"></div>
 			<div id="slider-container">
 				<div id="slider-overlay" class="disabled">
 					<span id="volume-value">80</span>
 					<input type="range" orient="vertical" id="volume-slider" min="0" max="100" step="1" value="80" />
 				</div>
-				<button id="volume-button" title="Adjust White Noise Volume">
+				<button id="volume-button" title="调节白噪音音量">
 					<svg id="volume-icon" class="svg-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
 						<path
 							d="M560-131v-82q90-26 145-100t55-168q0-94-55-168T560-749v-82q124 28 202 125.5T840-481q0 127-78 224.5T560-131ZM120-360v-240h160l200-200v640L280-360H120Zm440 40v-322q47 22 73.5 66t26.5 96q0 51-26.5 94.5T560-320ZM400-606l-86 86H200v80h114l86 86v-252ZM300-480Z"
@@ -92,146 +92,145 @@
 					</svg>
 				</button>
 			</div>
-			<button id="next" title="Next Round">
+			<button id="next" title="下一轮">
 				<svg class="svg-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
 					<path d="M12 36l17-12-17-12v24zm20-24v24h4V12h-4z" />
 				</svg>
 			</button>
 		</main>
 		<div id="menu" class="scrollbar">
-			<div class="menu-title">Tomodoro</div>
+			<div class="menu-title">番茄钟</div>
 			<div class="content">
 				<section class="section">
-					<h2>Timer</h2>
+					<h2>计时器</h2>
 					<div class="setting">
-						<label for="focus-input">Focus: <span></span></label>
+						<label for="focus-input">专注时长: <span></span></label>
 						<div class="input-holder">
 							<button class="ibtn" id="focus-dec">-</button>
 							<input type="number" name="focus-input" id="focus-input" min="1" max="180" />
 							<button class="ibtn" id="focus-inc">+</button>
-							minutes
+							分钟
 						</div>
 					</div>
 					<div class="setting">
-						<label for="short-input">Short Break: <span></span></label>
+						<label for="short-input">短休息: <span></span></label>
 						<div class="input-holder">
 							<button class="ibtn" id="short-dec">-</button>
 							<input type="number" name="short-input" id="short-input" min="1" max="180" />
 							<button class="ibtn" id="short-inc">+</button>
-							minutes
+							分钟
 						</div>
 					</div>
 					<div class="setting">
-						<label for="long-input">Long Break: <span></span></label>
+						<label for="long-input">长休息: <span></span></label>
 						<div class="input-holder">
 							<button class="ibtn" id="long-dec">-</button>
 							<input type="number" name="long-input" id="long-input" min="1" max="180" />
 							<button class="ibtn" id="long-inc">+</button>
-							minutes
+							分钟
 						</div>
 					</div>
 					<div class="setting">
-						<label for="rounds-input">Rounds</label>
+						<label for="rounds-input">轮次</label>
 						<br />
-						Number of focus sessions between long breaks.
+						长休息之间的专注次数。
 						<div class="input-holder">
 							<button class="ibtn" id="rounds-dec">-</button>
 							<input type="number" name="rounds-input" id="rounds-input" min="1" max="18" />
 							<button class="ibtn" id="rounds-inc">+</button>
-							rounds
+							轮
 						</div>
 					</div>
 				</section>
 				<section class="section">
-					<h2>Appearance</h2>
+					<h2>外观</h2>
 					<div class="setting">
-						<label for="theme-select">Theme:</label>
-						<select name="theme" id="theme-select" title="Theme">
-							<option value="dark" id="t-dark" selected>Dark</option>
-							<option value="black" id="t-black">Black</option>
-							<option value="light" id="t-light">Light</option>
-							<option value="white" id="t-white">White</option>
+						<label for="theme-select">主题:</label>
+						<select name="theme" id="theme-select" title="主题">
+							<option value="dark" id="t-dark" selected>深色</option>
+							<option value="black" id="t-black">黑色</option>
+							<option value="light" id="t-light">浅色</option>
+							<option value="white" id="t-white">白色</option>
 						</select>
 					</div>
 					<div class="setting" id="accents">
-						<h3>Accent Color:</h3>
+						<h3>强调色:</h3>
 						<div id="colors"></div>
 					</div>
 				</section>
 				<section class="section">
-					<h2>Sounds & Notifications</h2>
+					<h2>声音和通知</h2>
 					<div class="setting">
-						<label for="notif-select">Notifications:</label>
-						<select name="notif" id="notif-select" title="Notification Type">
-							<option value="enabled">Enabled</option>
-							<option value="silent">Silent</option>
-							<option value="disabled">Disabled</option>
+						<label for="notif-select">通知:</label>
+						<select name="notif" id="notif-select" title="通知类型">
+							<option value="enabled">启用</option>
+							<option value="silent">静音</option>
+							<option value="disabled">禁用</option>
 						</select>
 						<br /><br />
-						Make sure that your browser allows notifications from this site.
+						请确保您的浏览器允许来自此站点的通知。
 					</div>
 					<div class="setting">
-						<label for="audio-select">White Noise:</label>
-						<select name="audio" id="audio-select" title="Notification Type">
-							<option value="disabled" selected>Disabled</option>
-							<option value="noise">Enabled</option>
+						<label for="audio-select">白噪音:</label>
+						<select name="audio" id="audio-select" title="通知类型">
+							<option value="disabled" selected>禁用</option>
+							<option value="noise">启用</option>
 						</select>
 						<br /><br />
-						If enabled, white noise will be played during focus sessions. Make sure that your browser allows
-						sound from this site.
-					</div>
-				</section>
-				<section class="section">
-					<h2>PIP Mode</h2>
-					<div class="setting">
-						<label for="pip-method-select">PIP Method:</label>
-						<select name="pip-method-select" id="pip-method-select" title="PIP Method">
-							<option value="documentPictureInPicture" selected>Document Picture-In-Picture</option>
-							<option value="canvas">Canvas</option>
-						</select>
-						<br /><br />
-						PIP mode allows you to keep the timer on top of other windows.
-						<br />
-						Document Picture-In-Picture works on Chromium-based browsers.
-						<br />
-						Canvas PIP mode acts as a fallback for browsers that do not support Document PIP mode.
-						<br />
-						<b>Changing the mode requires a reload to take effect.</b>
-					</div>
-					<div class="setting">
-						<label for="pip-restore-select">Double-click to restore:</label>
-						<select name="pip-restore-select" id="pip-restore-select" title="Double-click to restore">
-							<option value="disabled" selected>Disabled</option>
-							<option value="enabled">Enabled</option>
-						</select>
-						<br /><br />
-						Double-clicking the PIP window will restore it to the main window.
-						<br />
-						Disabled by default.
-						<br />
-						Only works with Document PIP mode.
+						如果启用，白噪音将在专注时段播放。请确保您的浏览器允许播放声音。
 					</div>
 				</section>
 				<section class="section">
-					<h2>Backup and Restore</h2>
-					<button id="create-backup" class="hover-shadow">Create Backup</button>
+					<h2>画中画模式</h2>
+					<div class="setting">
+						<label for="pip-method-select">画中画方式:</label>
+						<select name="pip-method-select" id="pip-method-select" title="画中画方式">
+							<option value="documentPictureInPicture" selected>文档画中画</option>
+							<option value="canvas">画布</option>
+						</select>
+						<br /><br />
+						画中画模式允许您将计时器保持在其他窗口的顶部。
+						<br />
+						文档画中画适用于基于 Chromium 的浏览器。
+						<br />
+						画布画中画模式是对不支持文档画中画模式的浏览器的备选方案。
+						<br />
+						<b>更改模式需要重新加载才能生效。</b>
+					</div>
+					<div class="setting">
+						<label for="pip-restore-select">双击恢复:</label>
+						<select name="pip-restore-select" id="pip-restore-select" title="双击恢复">
+							<option value="disabled" selected>禁用</option>
+							<option value="enabled">启用</option>
+						</select>
+						<br /><br />
+						双击画中画窗口将其恢复到主窗口。
+						<br />
+						默认禁用。
+						<br />
+						仅适用于文档画中画模式。
+					</div>
+				</section>
+				<section class="section">
+					<h2>备份和恢复</h2>
+					<button id="create-backup" class="hover-shadow">创建备份</button>
 					<label for="backup-restore" id="backup-restore-label" class="hover-shadow"
-						><input type="file" accept=".json" id="backup-restore" />Restore Backup</label
+						><input type="file" accept=".json" id="backup-restore" />恢复备份</label
 					>
 				</section>
 				<section class="section">
-					<h2>About Tomodoro</h2>
+					<h2>关于番茄钟</h2>
 					<div id="about-desc">
-						Tomodoro is an open source pomodoro web app with features like offline support and PIP mode.
+						番茄钟是一个开源番茄工作法网络应用，具有离线支持和画中画模式等功能。
 					</div>
 					<a
-						href="https://github.com/lazy-guy/tomodoro"
+						href="https://github.com/luchen022/tomodoro.git"
 						id="github-link"
 						target="_blank"
 						class="button-link hover-shadow"
 					>
 						<img alt="GitHub" src="./GitHub-Mark-64px.png" />
-						View on GitHub
+						在 GitHub 上查看
 					</a>
 					<a href="https://ko-fi.com/Z8Z6E84CZ" target="_blank" id="kofi-link">
 						<img
@@ -243,72 +242,67 @@
 					</a>
 				</section>
 				<section class="section">
-					<h2>About PIP mode</h2>
-					Tomodoro supports Always on Top mode, or Picture-In-Picture mode, right in the browser, without
-					having to install any electron app.<br />
-					PIP mode is supported on Chromium based browsers(Tested on Chrome and Edge).<br />
-					Safari not tested (yet) but might work.<br />
-					On desktop Firefox, PIP button will only make the video visible but will not activate PIP. To switch
-					to PIP mode, right click on the video and select "Watch in Picture-In-Picture".
+					<h2>关于画中画模式</h2>
+					番茄钟支持浏览器中的始终置顶模式或画中画模式，无需安装任何 Electron 应用。<br />
+					画中画模式在基于 Chromium 的浏览器上受支持（在 Chrome 和 Edge 上测试过）。<br />
+					Safari 尚未测试，但可能可以使用。<br />
+					在桌面 Firefox 上，画中画按钮只会使视频可见，但不会激活画中画。要切换到画中画模式，请右键单击视频并选择"在画中画中观看"。
 					<br /><br /><br />
-					<h2>PIP mode on Chrome for Android</h2>
-					If you are using Chrome for Android, then the PIP button will make the video element visible. In
-					order to switch to PIP mode, make the video fullscreen and then go to your device's homescreen(by
-					pressing home button or using navigation gesture) without exiting fullscreen. PIP Mode get be
-					activated.
+					<h2>Chrome for Android 上的画中画模式</h2>
+					如果您使用的是 Chrome for Android，则画中画按钮将使视频元素可见。为了切换到画中画模式，请将视频全屏显示，然后转到您的设备主屏幕（通过按主页按钮或使用导航手势），而不退出全屏。画中画模式将被激活。
 				</section>
 			</div>
 		</div>
 		<div id="statistics" class="scrollbar">
 			<div class="menu-title">
-				Statistics
-				<button id="closestats" class="crossbtn" title="Close Statistics"></button>
+				统计
+				<button id="closestats" class="crossbtn" title="关闭统计"></button>
 			</div>
 			<div class="content">
 				<div class="setting">
-					<h3>Show Statistics of:</h3>
+					<h3>显示以下任务的统计:</h3>
 					<div id="filters" class="scrollbar">
 						<label class="task-chip">
 							<input type="checkbox" id="all" checked />
-							<span class="chip-task-name">All Tasks</span>
+							<span class="chip-task-name">所有任务</span>
 						</label>
 					</div>
 				</div>
 				<div class="setting">
-					<label for="stat-time-select">Time Period: </label>
+					<label for="stat-time-select">时间段: </label>
 					<select id="stat-time-select">
-						<option value="0">Today</option>
-						<option value="1">Past Day</option>
-						<option value="7" selected>Past Week</option>
-						<option value="365">Past Year</option>
-						<option value="all">All Time</option>
+						<option value="0">今天</option>
+						<option value="1">过去一天</option>
+						<option value="7" selected>过去一周</option>
+						<option value="365">过去一年</option>
+						<option value="all">全部时间</option>
 					</select>
 				</div>
 				<br /><br />
-				<h2>Overview</h2>
+				<h2>概览</h2>
 				<div id="stat-summary" class="remark">
-					You focused for a total duration of
+					您总共专注了
 					<span id="stat-summary-total"></span>
-					consisting of
+					，包括
 					<span id="stat-summary-rounds"></span>
-					Focus Rounds with an average round duration of
+					个专注轮次，平均每轮时长为
 					<span id="stat-summary-average"></span>
 					<br /><br />
-					Shortest round duration: <span id="stat-summary-shortest"></span>
+					最短轮次时长: <span id="stat-summary-shortest"></span>
 					<br />
-					Longest round duration: <span id="stat-summary-longest"></span>
+					最长轮次时长: <span id="stat-summary-longest"></span>
 				</div>
-				<h2>Time Distribution:</h2>
+				<h2>时间分布:</h2>
 				<div id="pie-container">
 					<div id="pie">
 						<svg viewbox="0 0 120 120"></svg>
 					</div>
 					<div id="pie-card-container" class="scrollbar"></div>
 				</div>
-				<h2>Time Spent per Task:</h2>
+				<h2>按任务分配的时间:</h2>
 				<div id="timespent" class="stat-chart scrollbar"></div>
 				<br /><br />
-				<h2>Time Spent per 6 Hours:</h2>
+				<h2>每 6 小时的时间分配:</h2>
 				<div id="timesixhourly" class="stat-chart scrollbar">
 					<div class="task-bar-container">
 						<div class="legend">00:00 - 06:00</div>
@@ -344,12 +338,12 @@
 					</div>
 				</div>
 				<div id="remark-hourly" class="remark">
-					You were most productive between <span class="remark-value"></span>
+					您最高效的时间段是 <span class="remark-value"></span>
 				</div>
-				<h2>Time Spent per Day:</h2>
+				<h2>按天分配的时间:</h2>
 				<div id="timedaily" class="stat-chart scrollbar">
 					<div class="task-bar-container">
-						<div class="legend">Monday</div>
+						<div class="legend">星期一</div>
 						<div class="bar-container">
 							<div class="bar" id="day-monday">
 								<div class="stat-value">21:11</div>
@@ -357,7 +351,7 @@
 						</div>
 					</div>
 					<div class="task-bar-container">
-						<div class="legend">Tuesday</div>
+						<div class="legend">星期二</div>
 						<div class="bar-container">
 							<div class="bar" id="day-tuesday">
 								<div class="stat-value">21:11</div>
@@ -365,7 +359,7 @@
 						</div>
 					</div>
 					<div class="task-bar-container">
-						<div class="legend">Wednesday</div>
+						<div class="legend">星期三</div>
 						<div class="bar-container">
 							<div class="bar" id="day-wednesday">
 								<div class="stat-value">21:11</div>
@@ -373,7 +367,7 @@
 						</div>
 					</div>
 					<div class="task-bar-container">
-						<div class="legend">Thursday</div>
+						<div class="legend">星期四</div>
 						<div class="bar-container">
 							<div class="bar" id="day-thursday">
 								<div class="stat-value">21:11</div>
@@ -381,7 +375,7 @@
 						</div>
 					</div>
 					<div class="task-bar-container">
-						<div class="legend">Friday</div>
+						<div class="legend">星期五</div>
 						<div class="bar-container">
 							<div class="bar" id="day-friday">
 								<div class="stat-value">21:11</div>
@@ -389,7 +383,7 @@
 						</div>
 					</div>
 					<div class="task-bar-container">
-						<div class="legend">Saturday</div>
+						<div class="legend">星期六</div>
 						<div class="bar-container">
 							<div class="bar" id="day-saturday">
 								<div class="stat-value">21:11</div>
@@ -397,7 +391,7 @@
 						</div>
 					</div>
 					<div class="task-bar-container">
-						<div class="legend">Sunday</div>
+						<div class="legend">星期日</div>
 						<div class="bar-container">
 							<div class="bar" id="day-sunday">
 								<div class="stat-value">21:11</div>
@@ -406,12 +400,12 @@
 					</div>
 				</div>
 				<div id="remark-daily" class="remark">
-					You were most productive on <span class="remark-value"></span>
+					您最高效的日期是 <span class="remark-value"></span>
 				</div>
-				<h2>Time Spent per Month:</h2>
+				<h2>按月分配的时间:</h2>
 				<div id="timemonthly" class="stat-chart scrollbar">
 					<div class="task-bar-container">
-						<div class="legend">January</div>
+						<div class="legend">一月</div>
 						<div class="bar-container">
 							<div class="bar" id="month-january">
 								<div class="stat-value">21:11</div>
@@ -419,7 +413,7 @@
 						</div>
 					</div>
 					<div class="task-bar-container">
-						<div class="legend">February</div>
+						<div class="legend">二月</div>
 						<div class="bar-container">
 							<div class="bar" id="month-february">
 								<div class="stat-value">21:11</div>
@@ -427,7 +421,7 @@
 						</div>
 					</div>
 					<div class="task-bar-container">
-						<div class="legend">March</div>
+						<div class="legend">三月</div>
 						<div class="bar-container">
 							<div class="bar" id="month-march">
 								<div class="stat-value">21:11</div>
@@ -435,7 +429,7 @@
 						</div>
 					</div>
 					<div class="task-bar-container">
-						<div class="legend">April</div>
+						<div class="legend">四月</div>
 						<div class="bar-container">
 							<div class="bar" id="month-april">
 								<div class="stat-value">21:11</div>
@@ -443,7 +437,7 @@
 						</div>
 					</div>
 					<div class="task-bar-container">
-						<div class="legend">May</div>
+						<div class="legend">五月</div>
 						<div class="bar-container">
 							<div class="bar" id="month-may">
 								<div class="stat-value">21:11</div>
@@ -451,7 +445,7 @@
 						</div>
 					</div>
 					<div class="task-bar-container">
-						<div class="legend">June</div>
+						<div class="legend">六月</div>
 						<div class="bar-container">
 							<div class="bar" id="month-june">
 								<div class="stat-value">21:11</div>
@@ -459,7 +453,7 @@
 						</div>
 					</div>
 					<div class="task-bar-container">
-						<div class="legend">July</div>
+						<div class="legend">七月</div>
 						<div class="bar-container">
 							<div class="bar" id="month-july">
 								<div class="stat-value">21:11</div>
@@ -467,7 +461,7 @@
 						</div>
 					</div>
 					<div class="task-bar-container">
-						<div class="legend">August</div>
+						<div class="legend">八月</div>
 						<div class="bar-container">
 							<div class="bar" id="month-august">
 								<div class="stat-value">21:11</div>
@@ -475,7 +469,7 @@
 						</div>
 					</div>
 					<div class="task-bar-container">
-						<div class="legend">September</div>
+						<div class="legend">九月</div>
 						<div class="bar-container">
 							<div class="bar" id="month-september">
 								<div class="stat-value">21:11</div>
@@ -483,7 +477,7 @@
 						</div>
 					</div>
 					<div class="task-bar-container">
-						<div class="legend">October</div>
+						<div class="legend">十月</div>
 						<div class="bar-container">
 							<div class="bar" id="month-october">
 								<div class="stat-value">21:11</div>
@@ -491,7 +485,7 @@
 						</div>
 					</div>
 					<div class="task-bar-container">
-						<div class="legend">November</div>
+						<div class="legend">十一月</div>
 						<div class="bar-container">
 							<div class="bar" id="month-november">
 								<div class="stat-value">21:11</div>
@@ -499,7 +493,7 @@
 						</div>
 					</div>
 					<div class="task-bar-container">
-						<div class="legend">December</div>
+						<div class="legend">十二月</div>
 						<div class="bar-container">
 							<div class="bar" id="month-december">
 								<div class="stat-value">21:11</div>
@@ -508,22 +502,22 @@
 					</div>
 				</div>
 				<div id="remark-monthly" class="remark">
-					You were most productive in <span class="remark-value"></span>
+					您最高效的月份是 <span class="remark-value"></span>
 				</div>
 				<details id="stat-details">
-					<summary><h2>Focus Round Records</h2></summary>
+					<summary><h2>专注轮次记录</h2></summary>
 					<div id="round-entries"></div>
 				</details>
 			</div>
 		</div>
 		<div id="managetasks" class="scrollbar">
 			<div class="menu-title">
-				Tasks
-				<button id="closetasks" class="crossbtn" title="Return to main screen"></button>
+				任务
+				<button id="closetasks" class="crossbtn" title="返回主屏幕"></button>
 			</div>
 			<div class="content">
-				<h2>Your Tasks</h2>
-				Here you can manage your tasks.
+				<h2>您的任务</h2>
+				在这里您可以管理您的任务。
 				<br /><br />
 				<div id="task-container"></div>
 				<form id="newtask" class="task">
@@ -533,47 +527,41 @@
 						type="text"
 						min="1"
 						maxlength="25"
-						placeholder="Add New Task"
+						placeholder="添加新任务"
 					/>
-					<button type="submit" title="Create new task" class="crossbtn" id="new-task-btn"></button>
+					<button type="submit" title="创建新任务" class="crossbtn" id="new-task-btn"></button>
 				</form>
 			</div>
 		</div>
 		<div id="firstload">
 			<div id="firstloadcontent">
-				<h2>Welcome to Tomodoro!</h2>
-				Tomodoro is an open source pomodoro web app with cool features like PIP Mode, white noise, tasks,
-				statistics and offline support.
+				<h2>欢迎使用番茄钟！</h2>
+				番茄钟是一个开源番茄工作法网络应用，具有画中画模式、白噪音、任务、统计和离线支持等酷炫功能。
 				<br /><br /><br />
-				<h2>What's New</h2>
+				<h2>新增功能</h2>
 				<ul id="new-list">
 					<li>
-						<h3>Tasks & Statistics</h3>
+						<h3>任务和统计</h3>
 						<div class="whats-new-desc">
-							You can now create tasks and track the time spent focusing on these tasks. All the data is
-							stored in your browser.
+							您现在可以创建任务并跟踪在这些任务上花费的专注时间。所有数据都存储在您的浏览器中。
 						</div>
 					</li>
 					<li>
-						<h3>White Noise</h3>
-						<div class="whats-new-desc">You can now listen to white noise during focus rounds.</div>
+						<h3>白噪音</h3>
+						<div class="whats-new-desc">您现在可以在专注时段听白噪音。</div>
 					</li>
 				</ul>
 				<br /><br />
-				<h2>About PIP mode</h2>
-				Tomodoro supports Always on Top mode, or Picture-In-Picture mode, right in the browser, without having
-				to install any electron app.<br />
-				PIP mode is supported on Chromium based browsers(Tested on Chrome and Edge).<br />
-				Safari not tested (yet) but might work.<br />
-				On desktop Firefox, PIP button will only make the video visible but will not activate PIP. To switch to
-				PIP mode, right click on the video and select "Watch in Picture-In-Picture".
+				<h2>关于画中画模式</h2>
+				番茄钟支持浏览器中的始终置顶模式或画中画模式，无需安装任何 Electron 应用。<br />
+				画中画模式在基于 Chromium 的浏览器上受支持（在 Chrome 和 Edge 上测试过）。<br />
+				Safari 尚未测试，但可能可以使用。<br />
+				在桌面 Firefox 上，画中画按钮只会使视频可见，但不会激活画中画。要切换到画中画模式，请右键单击视频并选择"在画中画中观看"。
 				<br /><br /><br />
-				<h2>PIP mode on Chrome for Android</h2>
-				If you are using Chrome for Android, then the PIP button will make the video element visible. In order
-				to switch to PIP mode, make the video fullscreen and then go to your device's homescreen(by pressing
-				home button or using navigation gesture) without exiting fullscreen. PIP Mode get be activated.
+				<h2>Chrome for Android 上的画中画模式</h2>
+				如果您使用的是 Chrome for Android，则画中画按钮将使视频元素可见。为了切换到画中画模式，请将视频全屏显示，然后转到您的设备主屏幕（通过按主页按钮或使用导航手势），而不退出全屏。画中画模式将被激活。
 			</div>
-			<button id="closeintro" class="hover-shadow">Let's Get Started!</button>
+			<button id="closeintro" class="hover-shadow">开始使用！</button>
 		</div>
 		<script src="./index.js"></script>
 	</body>

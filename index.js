@@ -37,9 +37,9 @@ let colorsDiv = document.getElementById("colors");
 let pipActive = false;
 
 const fullname = {
-	focus: "Focus",
-	short: "Short Break",
-	long: "Long Break",
+	focus: "专注",
+	short: "短休息",
+	long: "长休息",
 };
 
 let viewState = "timer";
@@ -79,7 +79,7 @@ function setTime() {
 		":" +
 		(seconds % 60).toString().padStart(2, "0");
 	timediv.innerText = timestr;
-	document.title = `${timestr} ${fullname[roundInfo.current]} - Tomodoro`;
+	document.title = `${timestr} ${fullname[roundInfo.current]} - 番茄钟`;
 	progress.style.strokeDashoffset = (roundInfo.t / config[roundInfo.current]) * 100;
 	if (pipActive) loop();
 }
@@ -99,25 +99,25 @@ timerWorker.addEventListener("message", (e) => {
 
 function nextRound() {
 	let finished = fullname[roundInfo.current];
-	let body = "Begin ";
+	let body = "开始 ";
 	if (roundInfo.current === "focus") {
 		if (audioType === "noise") {
 			fadeOut();
 		}
 		focusEnd(roundInfo.t);
-		finished += " Round";
+		finished += " 轮次";
 		if (roundInfo.focusNum >= config.longGap) {
 			roundInfo.current = "long";
 			roundInfo.focusNum = 0;
 		} else {
 			roundInfo.current = "short";
 		}
-		body += "a " + Math.floor(config[roundInfo.current] / 60) + " minute " + fullname[roundInfo.current];
+		body += "一个 " + Math.floor(config[roundInfo.current] / 60) + " 分钟的 " + fullname[roundInfo.current];
 	} else {
 		roundInfo.current = "focus";
 		roundInfo.focusNum++;
 		roundnoDiv.innerText = roundInfo.focusNum + "/" + config.longGap;
-		body += "focusing for " + Math.floor(config.focus / 60) + " minutes";
+		body += "专注 " + Math.floor(config.focus / 60) + " 分钟";
 	}
 
 	timer.className = "t-" + roundInfo.current;
@@ -147,7 +147,7 @@ function pauseplay() {
 		}
 		timerWorker.postMessage({ type: "stop" });
 		roundInfo.running = false;
-		pauseplaybtn.title = "Start Timer";
+		pauseplaybtn.title = "开始计时";
 		pauseplaybtn.className = "paused";
 	} else {
 		if (roundInfo.current === "focus" && audioType === "noise") {
@@ -159,7 +159,7 @@ function pauseplay() {
 			maxDuration: config[roundInfo.current],
 		});
 		roundInfo.running = true;
-		pauseplaybtn.title = "Pause Timer";
+		pauseplaybtn.title = "暂停计时";
 		pauseplaybtn.className = "playing";
 	}
 }
@@ -411,7 +411,7 @@ menubtn.addEventListener("click", () => {
 		lastanim.onfinish = () => {
 			menu.style.display = "none";
 		};
-		menubtn.title = "Open Settings";
+		menubtn.title = "打开设置";
 		menubtn.classList.remove("cross");
 		viewState = "timer";
 	} else {
@@ -421,7 +421,7 @@ menubtn.addEventListener("click", () => {
 		lastanim = menu.animate(animations.in, animations.animoptions);
 		lastanim.onfinish = () => (mainel.style.display = "none");
 		menubtn.classList.add("cross");
-		menubtn.title = "Close Settings";
+		menubtn.title = "关闭设置";
 		viewState = "menu";
 	}
 });
@@ -475,9 +475,9 @@ document.getElementById("closestats").addEventListener("click", function () {
 
 //#region Statistics
 
-let tasks = ["Default Task"];
+let tasks = ["默认任务"];
 
-let selectedTask = "Default Task";
+let selectedTask = "默认任务";
 
 let taskContainer = document.getElementById("task-container");
 let filterContainer = document.getElementById("filters");
@@ -492,7 +492,7 @@ function loadTasks() {
 		tasks = JSON.parse(localStorage.getItem("pomo-tasks"));
 		if (!(tasks instanceof Array)) {
 			localStorage.removeItem("pomo-tasks");
-			tasks = ["Default Task"];
+			tasks = ["默认任务"];
 		}
 	}
 	if (localStorage.getItem("pomo-records")) {
@@ -629,12 +629,12 @@ document.getElementById("backup-restore").addEventListener("change", function ()
 				noTaskManager();
 				console.log(rec, tasks);
 				let tr = db.transaction("records", "readwrite");
-				tr.oncomplete = () => alert("Backup restored successfully!");
+				tr.oncomplete = () => alert("备份恢复成功！");
 				let objstore = tr.objectStore("records");
 				rec.forEach((r) => objstore.add(r));
 			} catch (error) {
 				console.log(error);
-				alert("An error occured! Make sure that you are restoring a valid backup file.");
+				alert("发生错误！请确保您正在恢复有效的备份文件。");
 			}
 		});
 	}
@@ -704,12 +704,12 @@ function createTaskEl(task) {
 
 	let tdel = document.createElement("button");
 	tdel.className = "task-delete-btn crossbtn";
-	tdel.title = "Delete this task";
+	tdel.title = "删除此任务";
 	tdel.addEventListener("click", () => {
 		let p = confirm(
-			'Are you sure you want to delete the task "' +
+			'您确定要删除任务 "' +
 				task +
-				'"? All the data related to this task will be deleted.'
+				'" 吗？与此任务相关的所有数据将被删除。'
 		);
 		if (!p) return;
 		tasks.splice(tasks.indexOf(task), 1);
@@ -786,12 +786,12 @@ document.getElementById("newtask").addEventListener("submit", function (ev) {
 	let formdata = new FormData(this);
 	let tname = formdata.get("taskname").trim();
 	if (tname === "") {
-		alert("Please Enter a Valid Name!");
+		alert("请输入有效的名称！");
 		this.reset();
 		return;
 	}
 	if (tasks.includes(tname)) {
-		alert("Task already exists!");
+		alert("任务已存在！");
 		return;
 	}
 	tasks.push(tname);
@@ -824,7 +824,7 @@ function pieCardGenerator(task) {
 	el.appendChild(pieName);
 	let timeHolder = document.createElement("div");
 	let text = document.createElement("span");
-	text.innerText = "Time Spent: ";
+	text.innerText = "花费时间: ";
 	let timeSpan = document.createElement("span");
 	timeSpan.className = "pie-card-time";
 	let ee = document.createElement("div");
@@ -836,7 +836,7 @@ function pieCardGenerator(task) {
 	roundno.className = "pie-card-rounds";
 	let roundnospan = document.createElement("span");
 	roundnospan.className = "pie-card-rounds-span";
-	roundno.append(document.createTextNode("Number of Rounds: "), roundnospan);
+	roundno.append(document.createTextNode("轮次数: "), roundnospan);
 	timeHolder.append(text, timeSpan, ee, roundno);
 	el.appendChild(timeHolder);
 	return el;
@@ -878,9 +878,9 @@ function roundEntryGen(entry) {
 	roundEntryTime.innerText = format.format(entry.d);
 	let entryDelete = document.createElement("button");
 	entryDelete.className = "entry-delete";
-	entryDelete.innerText = "Delete";
+	entryDelete.innerText = "删除";
 	entryDelete.addEventListener("click", () => {
-		let p = confirm("Are you sure you want to delete this record? This cannot be undone.");
+		let p = confirm("您确定要删除此记录吗？此操作无法撤销。");
 		if (!p) return;
 		deleteRecord(entry.d);
 		roundEntry.remove();
@@ -896,23 +896,23 @@ let hourlyFullNames = ["00:00 - 00:06", "06:00 - 12:00", "12:00 - 18:00", "18:00
 
 let hourlyBars = hourlyNames.map((d) => document.getElementById("hourly-" + d));
 
-let dayNames = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
+let dayNames = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
 
 let dayBars = dayNames.map((d) => document.getElementById("day-" + d));
 
 let monthNames = [
-	"january",
-	"february",
-	"march",
-	"april",
-	"may",
-	"june",
-	"july",
-	"august",
-	"september",
-	"october",
-	"november",
-	"december",
+	"一月",
+	"二月",
+	"三月",
+	"四月",
+	"五月",
+	"六月",
+	"七月",
+	"八月",
+	"九月",
+	"十月",
+	"十一月",
+	"十二月",
 ];
 
 let monthBars = monthNames.map((d) => document.getElementById("month-" + d));
@@ -1013,7 +1013,7 @@ async function loadStatistics(updateEntryCards = true) {
 				maxD = i;
 			}
 		});
-		remarkDaily.querySelector(".remark-value").innerText = dayNames[maxD] + "s";
+		remarkDaily.querySelector(".remark-value").innerText = dayNames[maxD] + "日";
 
 		let maxM = 1;
 		let maxMV = 0;
@@ -1130,9 +1130,9 @@ function hmstrFull(t) {
 	let r = hmstr(t)
 		.split(":")
 		.map((i) => parseInt(i));
-	if (r[0] === 0) return r[1] + " Minutes";
-	if (r[1] === 0) return r[0] + " Hour" + (r[0] === 1 ? "" : "s");
-	return `${r[0]} Hour${r[0] > 1 ? "s" : ""} & ${r[1]} Minute${r[1] > 1 ? "s" : ""}`;
+	if (r[0] === 0) return r[1] + " 分钟";
+	if (r[1] === 0) return r[0] + " 小时" + (r[0] === 1 ? "" : "");
+	return `${r[0]} 小时${r[0] > 1 ? "" : ""} & ${r[1]} 分钟${r[1] > 1 ? "" : ""}`;
 }
 
 //#endregion
